@@ -1,0 +1,9 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description:
+  Only create buckets to store animal pictures
+Resources:
+  # dog-pic just define the name of logic resouces, it's not a name for physical resources
+  dogpics:
+    Type: "AWS::S3::Bucket"
+  catpics:
+    Type: "AWS::S3::Bucket"
