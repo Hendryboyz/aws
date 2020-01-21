@@ -27,6 +27,12 @@ http://169.254.169.254/latest/meta-data
 System Status: Related to the host which EC2 runs on
 Instance Status: Related to the EC2 itself
 
+### Dedicated Host
+Require a unique phsyical host for specific requirement. It give customers complete control over physical instance placement and dedicated hardware free from other customer interaction.
+* Meet Compliance and Regulatory reason
+* Licensing software model
+* Control instance placement
+
 ### Notes
 * Shutdown but **not stop**, this instance still will be charged
 * Hibernate Stop Instance: Stop the instance but keep the instance state, and users can start it with the same state. This is not available for all instance types
