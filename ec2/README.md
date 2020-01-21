@@ -38,6 +38,11 @@ Require a unique phsyical host for specific requirement. It give customers compl
 * Hibernate Stop Instance: Stop the instance but keep the instance state, and users can start it with the same state. This is not available for all instance types
 
 
+## Elastic IP Address
+* Region level resource, not a availability zone resource
+* Charge if allocating, no matter it is used or not
+
+
 ## Elastic Block Storage
 ### Types
 * Solid State: gp2, io1
