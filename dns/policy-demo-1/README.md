@@ -32,7 +32,7 @@
 ## Geolocation Routing Policy
 * Only return the record match the record name and **particular location**
   * If location isn't match, route 53 will not find the nearest location to return
-  * If many location is match, route53 will return the highest priority location
+  * If many location is match, route53 will return the highest priority location — priority goes to the smallest geographic region, specific of the requestor
 * Can set the different granularity of different granularity
 * This location is the **source** location
 
