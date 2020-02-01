@@ -92,3 +92,28 @@ resource policies can be given the account that users don't control. in the s3, 
 * Have the expiring time let users can access pre-signed URL temporarily
 * Allow to create the pre-sign URL to the object users don't have permission, but the generated URL still can't access the object
 * Presigned URL can used not only download but upload objects
+
+# Advanced Properties
+## Cross Region Replication
+> **One way** replication of data from src bucket to dest bucket in different regions.
+
+* Require version is enable in both src and dest bucket
+* Allow to create replication with prefix or tag
+* Have to provide a IAM role to replicate the object from src and deposit them to dest bucket
+* Global resilience, backup and change storage class
+
+Exception
+* System Actions(lifecycle events)
+* Any existing objects before replication is enabled
+* SSE-C encrypted objects - only SSE-S3 and SSE-KMS encrypted objects are supported
+  * Notice: KMS is regional basis
+
+By default, replicated objects keep their
+* Storage Class
+* Object Name
+* Owner
+* Object permissions
+
+Replication allow to change
+* Storage Class
+* Owner
