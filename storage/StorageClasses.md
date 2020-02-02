@@ -62,3 +62,4 @@ Storage Classes influence the cost, durability, availability and "first byte lat
 * Not allow to go back standard by lifecycle rules
 * Objects smaller than 128KB cannot be transitioned into Intelligent-Tiering
 * Objects must stay in the original storage class for a minimum of 30 days before transitioning before tiers
+* minimum charges is to store 30 day files
