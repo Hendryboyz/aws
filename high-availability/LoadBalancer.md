@@ -43,6 +43,8 @@
 * Allow to integrate with AWS Web Application Firewall(WAF)
 * Use ALB if need to use containes or microservices
 * Using Server Name Indication(SNI) to host multiple SSL certificates
+* Traffic is evenly distributed based on the number of resources assigned to the ELB nodes, even if they are not in the same Availability Zone (known as Cross-Zone Load Balancing).
+  * Historically, ELB nodes use to receive traffic evenly. However
 
 # Network Load Balancer
 * Operate at layer 4(Transport) of the OSI network model
