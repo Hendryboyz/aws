@@ -5,7 +5,7 @@
 
 ## Message Attributes
 * MessageRetentionPeriod(default 4 days, 60s ~ 14 days): a period that message stay in the queue before it's discarded
-* VisibilityTimeout(0 hours ~ 12 hours): the period of time that the message isn't visible **after** the consumer recieve message
+* VisibilityTimeout(0 seconds ~ 12 hours): the period of time that the message isn't visible **after** the consumer recieve message
 * ReceiveMessageWaitTimeSeconds(0 ~ 20 seconds): The maximum of time the long polling can wait before returning the empty result.
 
 ## Usecase
