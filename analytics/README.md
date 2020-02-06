@@ -60,3 +60,16 @@
    * 2 MB/secs Read per Shard
    * 1000/secs Records per Shard  
 * Kinesis Data Record(Kafka Topics): Entity writtent to and read from stream
+
+# Redshift
+* Peta-bytes scale data warehousing solution from AWS.
+* Data warehousing and analytics
+* Generally, the data store after transactions have been process in the stores
+* Row-base database: for online transation process database
+* Column-base database: for anaytics purpose database
+* Database you would add and updagte individual records
+
+
+* Athena: Perform transactional queries on data in the S3
+* EMR: Large scale analytics and modified data
+* 
