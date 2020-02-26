@@ -60,6 +60,7 @@ Require a unique phsyical host for specific requirement. It give customers compl
 * EC2 Dashboard(Right) > Account Attributes > Settings > Enable default encrypt new EBS volumes in entire **region**
 * Use snapshots to move EBS volumn between Availability Zones
 * Restart doesn't change the EC2 host, so the public ip addess doesn't change
+* [Instance permission](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#config-settings-and-precedence)
 
 ## Amazon Machine Images(AMIs)
  > Container which reference the snapshot that are created from the original instance
