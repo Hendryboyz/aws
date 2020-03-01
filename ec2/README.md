@@ -20,7 +20,8 @@
 * a: AMD CPU
 
 ### Instance Metadata
-http://169.254.169.254/latest/meta-data
+* Display bootstrap scripts: curl http://169.254.169.254/latest/user-data/
+* Display instance metadata: curl http://169.254.169.254/latest/meta-data/
 
 ### Status
 System Status: Related to the host which EC2 runs on
@@ -40,27 +41,6 @@ Require a unique phsyical host for specific requirement. It give customers compl
 ## Elastic IP Address
 * Region level resource, not a availability zone resource
 * Charge if allocating, no matter it is used or not
-
-
-## Elastic Block Storage
-### Types
-* Solid State: gp2, io1
-* Hard Disk Drives: sc1, st1, standard
-
-### Encryptions
-* Encrypt both at rest and in transit using AWS EC2 host
-* KMS generate DEKs to encrypt data. Encrypted part of DEKs put in the KMS and decrypted part of DEKs put in the EC2 host
-* Encrypted volume can't create uncrypted volume
-* KMS(EBS) Encryption can't handle OS level encrpytion
-
-### Snapshots
-* Use Data Lifecycle Manager to create/delete snapshots
-
-### Notes
-* EC2 Dashboard(Right) > Account Attributes > Settings > Enable default encrypt new EBS volumes in entire **region**
-* Use snapshots to move EBS volumn between Availability Zones
-* Restart doesn't change the EC2 host, so the public ip addess doesn't change
-* [Instance permission](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#config-settings-and-precedence)
 
 ## Amazon Machine Images(AMIs)
  > Container which reference the snapshot that are created from the original instance
