@@ -27,3 +27,6 @@ AWS recommend user rotate their access key regularly, so they provide maximum 2 
 
 **Best Practice**
 * identity need a temporary permission
+
+## Amazon Inspector
+> Automated security assessment service to test the network accessiblity of Amazon EC2 instances and the security state of your applications running on the instances.
