@@ -8,6 +8,7 @@
 * Support SSL offloading: load balancer encrypt/decrypt the data in transit and communicate to backend instances with HTTP
 * Cross-zone load balancing allows each node distribution traffic across mulitiple avaialablity zone.(Each load balancing node place in one availability zone)
 * Load balancer can be used between tiers(internal facing)
+* Generation 2 Load Balancer(ALB/NLB) support Dynamic Ports, so ideals for containerized services
 
 # Class Load Balancer
 * Not recommend to use in the new product
@@ -46,6 +47,7 @@
 * Traffic is evenly distributed based on the number of resources assigned to the ELB nodes, even if they are not in the same Availability Zone (known as Cross-Zone Load Balancing).
   * Historically, ELB nodes use to receive traffic evenly. However
 
+
 # Network Load Balancer
 * Operate at layer 4(Transport) of the OSI network model
 * Load balance any protocols not HTTP or HTTP/S
@@ -55,3 +57,18 @@
 * Source IP address preservation - packets unchanged
 * IP addressable - static address
 * Allow to register target outside the VPC
+
+# UseCase
+## Classic Load Balancer
+* EC2 Classic Network
+
+## Application Load Balancer
+* Flexible feature set
+* HTTP and HTTPS traffic
+* Advanced routing feature
+* Visibility features targeted at application architectures including microservices and containers
+
+## Network Load Balancer
+* Ultra-high performance
+* Static IP addresses for your application
+* Multiplayer Online Game(TCP socket connection)
