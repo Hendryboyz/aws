@@ -10,12 +10,25 @@
 |Isolation|Operating System|Process|
 |Metapher|House|Department|
 
+### Docker
 * Docker image specify how to create container and docker will follow the definition of images to create the container
 * Container is an islolated environment for containerized application
+  - container have everything the application need to run
 * Image can be uploaded to the private **container registry**(image repository) for version control.
 * Dockerhub is the most popular public container registry
 
 ## Elastic Container Service
+### Why use ECS/Containers ?
+* Create distributed applications and Microservices
+  - Create application architecture comprising independent tasks or processes(microservices)
+  - Allow to start, stop, manage, monitor and **scale** each container independently
+* Batch and Extract-Transform-Load(ETL) Jobs
+  - Run different versions of the same job or multiple jobs on the same cluster
+  - Share cluster capacity with other processes and/or grow jobs dynamically on demand to improve resource utilization
+* Continuous Integration and Deployments
+  - Docker's image versioning, allow to use containers for continuous integration and deployment
+  - Build processes can pull, build and create Docker images for containers
+
 ### EC2 Mode
 > ECS create and manage the EC2 instances which are used to be container hosts
 
@@ -24,7 +37,7 @@
 * EC2 Mode will have some EC2 instances resources to be charged
 
 ### Farget Mode
-> Conatiner hosts are fullly managed by AWS
+> Conatiner hosts(EC2) are fullly managed by AWS
 
 Cluster Template: Networking only
 
