@@ -16,8 +16,9 @@ another layer of protection, it will default block all of the access.
 ### Identity Policies
 users, groups and roles(identites) can be given the permission to access s3 using identity policies
 
-### Bucket Policies
+### Bucket Policies(resource based policy)
 resource policies can be given the account that users don't control. in the s3, resource polices call bucket policies
+* Only apply to the objects that were created by bucket owner account inside of the bucket
 * Priority
   * Explicit Deny
   * Explicit Allow
@@ -26,6 +27,7 @@ resource policies can be given the account that users don't control. in the s3, 
 ### Access Control Lists
 * no longer recommended by AWS
 * ACLs the only way to grant security permission to the object level
+* When
 
 ### Refernce
 * [Must Read - Controlling Access to S3 Resources](https://aws.amazon.com/blogs/security/iam-policies-and-bucket-policies-and-acls-oh-my-controlling-access-to-s3-resources/)

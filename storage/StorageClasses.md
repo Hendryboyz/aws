@@ -24,6 +24,7 @@ Storage Classes influence the cost, durability, availability and "first byte lat
 
 ## Glacier
 * Long-term archival storage(warm or cold backups)
+* Have to raise check-out and check-in jobs to retrieve
 * Retrieval could take minutes or hours(pay for faster)
 * 99.99% availability, 3+ AZ replication
 * Retrieval fee
@@ -35,6 +36,11 @@ Storage Classes influence the cost, durability, availability and "first byte lat
 * 99.99% availability, 3+ AZ replication
 * minimum charges is to store 180 day * 40KB files
 * longer retrieval time but cheaper than Glacier - tape-style storage
+
+## Reduced Redundancy
+* Reproducible objects
+* Not critical data
+* Frequently accessed
 
 ## Reference
 * [Official Class Storage Reference](https://aws.amazon.com/s3/storage-classes/)
