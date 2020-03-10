@@ -8,6 +8,11 @@
 * Item in the table don't have to given the same attributes
 * Private by default. Users have to access DynamoDB througth the policies which give external identies permissions.
 * Resilient on regional basis. Store at least 3 replicas in different AZs.
+* Dynamodb have some initial burst capacity and it will be kept for users
+
+## Feature
+* Schemaless, key-value store
+* DynamoDB stream - allows for other services to take action based on **changes to dynamodb items**
 
 ## Terminologies
 * Table -> Table: a collection of items that share the same partition key and/or sort key in DynamoDB.
@@ -17,19 +22,37 @@
 * Range Key = Sort Key
 * Hash Key = Partition Key
 
+## Tables
+### Primary Key
+* Partition(Hash) Key: table use partition key in an internal hash function to determine where  the partition data willl be stored
+* Sort(Range) Key: partition use sort key to sort the data inside of that partition
+* Primary key is used to identify item uniquely.
+  * Simple Primary Key: Only Hash Key
+  * Composite Primary Key: Hash Key + Range Key
+
 ## Operations
 * Item size max 400kb
 * Item only can be handle with the entired item. It isn't allow to handle the partial of item.
 
+### GetItem 
+> effenciently read a **single item** from a table by providing the **item's primary key**
+
+### BatchGetItem
+> read up to 100 items, from one or more tables
+  - equal to execute get item operation multiple times
+
 ### Scan
+* Read **all** of the items in a table. It's very ineffeciency.
 * To scan a table, don't require to provide anything as the parameters.
 * Read every item in the table, apply the filter to throw the item which don't match away, and then deliver the remaining one as the reslt.
 * Consume the read capacity for the entire table(expensive)
+* **Always avoid** to use scan to read items
 * Flexible
 
 ### Query
 * Lookup the table without reading every items(cheaper)
 * More efficiency
+* Return items are treated as a **single read operation**, where DynamoDB computes the total size of all items and then rounds up to the next 4KB boundary
 * Retrieve the item with the specific partition key and sort key
 * Don't allow to query data cross partition key
 * Users have to know how they query the table
@@ -107,31 +130,3 @@
 * NEW_IMAGE: entired new item will be added
 * OLD_IMAGE: entired pre-change item will be added
 * NEW_AND_OLD_IMAGES: entired item before and after chaning will be added
-
-## DynamoDB Index
-Users should know the access pattern of the table in advanced. But users can change the access pattern through the index.
-
-### Local Secondary Index(LSI)
-> Alternative view of a table's data using **the same partition key** but alternative sort key. Allow us to specify the alternative sort key.
-
-* Share the RCUs and WCUs values for the main table.
-* Only allow to be created at the same time as creating a table
-* Only work when table has a composite primary key(hash key + range key)
-* Per table allow to have maximum 5 LSIs
-
-
-### Global Secondary Index(GSI)
-> Global Secondary Index allow data in a table to be presented using an alternative partition and sort key.
-
-* Like using the new partition and sort key create a new table
-* Allow to be created at any point after the table is created
-* GSIs have their won RCU and WCU values, and allow to auto scaling
-* Allow to create 20 GSIs per table. Can be increased by support tickets.
-* Asynchonous copied the data from the main table, have some leg. GSIs doesn't allow to perform strongly consistent reads
-
-### Proejction
-> Can use to improve read performance by projecting less data, but if you take the non-projected attributes, it will cause huge performance penalty because it have fetch attributes from the main table.
-
-* All
-* Keys only
-* Include: only take small amount of data to the index
