@@ -101,13 +101,47 @@
 * Eventually consistent allow to read data from any of the nodes(leader or non-leader). Maybe non-leader still doesn't update the new data. [Defaut, Cheaper]
 
 ### Capacities
-* On-demand mode: the capacities are hard to forecaset. Bills a per-request charge.
+
+#### On-demand mode
+the capacities are hard to forecaset. Bills a per-request charge.
+* Only allow to change between on-demand and provisioned **once per day**
+* Bills a per-request charge.
+* Balance cost and performance
+
+
+#### Autoscaling
+* Auto-scaling modes steps
+  1. Create autoscaling policy(target utilization) for dynamodb table
+  2. Publish cosume capacity metrics to CloudWatch
+  3. CloudWatch use Alarm invoke application auto scaling to evaluate scaling policy
+  4. Application auto scaling issue UpdateTable request to adjust table's provisioned throughput
 * Provisioned throughtput mode:
   * A read operation will consume one capacity for every 4 KBs of strong consistent data or 0.5 capacity for every 4 KBs of eventual consistent data.
   * Read any data less than 4 kb in a single operation, it will always consume 0.5 for eventual and 1 for strong consistent data.
   * Write also cost 1 capacity to write 1 kbs of data. Write don't have consistent mode.
+* Auto scaling sometimes scale too slow and there are some latencis between DynamoDB and CloudWatch
 * The capacity of each operation is calculated seperately
 * Allow to auto scaling capacities in DynamoDB settings
+* Can predict some level of workload
+* Allow to control maximum provisioned capacity(cost sensitive)
+
+### Throttling
+* Each partition share the table's RCUs and WCUs. The capacity of the partition determine if the request is allowed or will be throttled (rejected)
+* Prevent application use too much capacity to save users' money
+* Cause
+  - Always Read/Write to hot partition(partition key)
+  - Table don't have enough capacity
+* Result
+  - Lose data
+  - Data outdated
+  - Slow processing
+* Solution
+  - Increase provisioned capacity on the table
+  - Be aware of the capacity of GSIs. Throttle on an index is double-counted as a throttle
+  - How often application retry when throttling occurs(progrssively longer waits)
+  - Design partition key to distribute the read/write operation as evenly as possible
+* Allow to use Time-to-Live to expire some unused items
+
 
 **Write Capacity Unit(WCU)**
 * One write capacity unit allows to write 1 KB to the table
@@ -120,10 +154,18 @@
 * [How to Calculate Read and Write Capacity for DynamoDB](https://www2.linuxacademy.com/howtoguides/20310-how-to-calculate-read-and-write-capacity-for-dynamodb/)
 
 ## DynamoDB streams
+> Time ordered sequence of item level change in DynamoDB table 
+
+* Like a trigger in Relational Database and this trigger is Lambda function in DynamoDB(Event Driven)
 * Per table basis
-* Provides a rolling 24 hours window of any changes to items in the table
-* Default no streams
+* Provides a rolling **24 hours** window of any changes to items in the table
+* Default **NO** streams
 * Allow the changes to trigger the Lambda function. Use DynamoDB provide the resilient and Lambda provide the scalibility.
+* DyanmoDB streams seperate the endpoints from DynamoDB
+
+### Usecase
+* Use DynamoDB streams to implement the transaction in one or more DynamoDB table in **24 hours** windows
+
 
 ### Types
 * KEYS_ONLY: items are added, updated or deleted. The primary key will be added
