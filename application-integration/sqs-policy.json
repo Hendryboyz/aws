@@ -1,0 +1,20 @@
+{
+  "Version": "2012-10-17",
+  "Id": "arn:aws:sqs:us-east-1:359194515946:myQueue/SQSDefaultPolicy",
+  "Statement": [
+    {
+      "Sid": "S3AccessControlPolciy",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "SQS:SendMessage",
+      "Resource": "arn:aws:sqs:us-east-1:359194515946:myQueue",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:s3:*:*:henry-cda2020sqstest"
+        }
+      }
+    }
+  ]
+}

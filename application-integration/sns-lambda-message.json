@@ -1,0 +1,18 @@
+{
+  "Type": "Notification",
+  "MessageId": "2e56a911-9c2a-5efc-9084-fff25fed1f03",
+  "TopicArn": "arn:aws:sns:us-east-1:440406934288:newTopics",
+  "Subject": "Hello",
+  "Message": "Hello to Lambda",
+  "Timestamp": "2020-03-12T04:58:47.085Z",
+  "SignatureVersion": "1",
+  "Signature": "Oc8Apljmd4TA2nht2gxIiiKgo4N1+o/2GOLOR5XTddgGOZ4EX/SxYoE5O7kUPHawNwfiMwlYRgIGF3Bmn71dpPp0ey987UED40+Q49unDbJUpM8eGLmxyqMq/cFAEVyDSt9R8/crIJSzj6255jfcMSwi+UJk9m5qY6lbPST9RaXwMh43wwY3uS/wUoG5KJ3C9VuYztGdtXZIb+kh1L4Onq9hIWjuIvl2M4eFmee4CZlaHQ+IbKU5bmsjsYNkqAMUe4KfFjGRlJzliipm24xEn26+N7TmZTzhsoCI0bgqbbd+gvEAYOIZ7BLRX8tZ0EpLmVxnrAP12D/NEedpShdGaw==",
+  "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-a86cb10b4e1f29c941702d737128f7b6.pem",
+  "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:440406934288:newTopics:a9b75eb9-1ff8-4074-94a1-5a0f28cc8027",
+  "MessageAttributes": {
+    "sender": {
+      "Type": "String",
+      "Value": "henry_chou"
+    }
+  }
+}
