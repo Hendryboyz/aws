@@ -4,6 +4,7 @@
 ## Properties
 * manage backup and provide resilience(multi-az deployment)
 * read replica to improve read performance
+* NOT allow to access the underlying OS (fully-managed)
 
 ## Database Engine
 * MySQL, MariaDB
@@ -74,6 +75,15 @@ Support types
 
 ### Reference
 * [Multi-AZ Deployments](https://aws.amazon.com/rds/details/multi-az/)
+
+## RDS encryption
+* Allow to apply encryption to DB instance and snapshots at rest
+* Don't need to modify application code to use encryption
+* Use **Key Management Service** to encrypt and decrypt the Amazon RDS resources, allow to use
+  * Customer managed customer master key
+  * AWS managed customer master key
+* Encrypt the uncrypted RDS instance snapshot
+* Can't have a unencrypted read replica from encrypted RDS vice versa
 
 ## Note
 * Read replica, or a database standby, needs to be in the same encrypted or unencrypted state as the primary database

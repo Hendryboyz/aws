@@ -63,6 +63,7 @@
 
 # Redshift
 * Peta-bytes scale data warehousing solution from AWS.
+* Full-managed and scalable
 * Data warehousing and analytics
 * Generally, the data store after transactions have been process in the stores
 * Row-base database: for online transation process database
