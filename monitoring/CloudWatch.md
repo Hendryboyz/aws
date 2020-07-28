@@ -1,6 +1,12 @@
 # CloudWatch
 > Provdie full suit of metric collection and monitoring functionality
 * Repository fo metric data
+* Minimum granularity is **1 minute**
+* Store indefinitely by default
+* Allow to retrieve data from any terminated EC2 or ELB
+* Allow to use on premise
+  * SSM agent
+  * CloudWatch agent
 
 Push data to cloud watch use: 
 * CloudWatch API
@@ -12,6 +18,9 @@ Push data to cloud watch use:
 * metric is collection of those data point over time
 * metric will be grouped into **namespace**
 * allow to take action to metric
+* Granularity
+  * 1 minute for detailed monitoring
+  * 5 minutes for standard monitoring
 
 ## State
 * OK

@@ -70,7 +70,7 @@
 * GetQueueUrl
 * SendMessage
 * RecieveMessage
-* ChangeMessageVisibility
+* ChangeMessageVisibility: Change the visibility timeout of a specified message in a queue to a new value. The maximum allowed timeout value is 12 hours
 * DeleteMessage
 
 ### SDK Benefits over APIs

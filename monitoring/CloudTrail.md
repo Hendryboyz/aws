@@ -23,3 +23,9 @@
 ## Best Practice
 * Create earlier to prevent security exploit
 * When a new account create, create the trail after billing alert setting up
+
+# AWS Config
+> Record the state of the AWS environment and can notify the environment changes
+
+## Case
+* View the history of the security group

@@ -51,12 +51,23 @@
 
 ### Query
 * Lookup the table without reading every items(cheaper)
-* More efficiency
+* More efficiency than a Scan
+* Query results are always sorted by the Sort Key, and sorted in ascending order
+  * Set ScanIndexForward parameter to false to reverse the order - queries only
 * Return items are treated as a **single read operation**, where DynamoDB computes the total size of all items and then rounds up to the next 4KB boundary
 * Retrieve the item with the specific partition key and sort key
 * Don't allow to query data cross partition key
 * Users have to know how they query the table
 * Always be **recommended**
+
+## Error Handling
+### Exponential backoff algorithm
+> Apply progressively longer waits between retries for consecutive error responses
+* AWS SDK is using the exponential backoff algorithem to handle all API call including DynamoDB
+* Users have to handle the exponential backoff retries by themselves if they don't leverage the AWS SDK
+
+### ProvisionedThroughputExceededException
+> Application is sending more requests to the DynamoDB table than the provisioned read/write capacity can handle
 
 ## Advanced Configurations
 ### Backups
@@ -79,6 +90,16 @@
 
 ### Metrics and Monitoring
 * Full integration with CloudWatch
+
+### Time to Live(TTL)
+* Define an expiry time for data
+* Expired data marked for deletion and it will be deleted in next 48 hours
+* Great for removing irrelevant or old data
+  * Session data
+  * Event logs
+  * Temporary data
+* Reduces cost by automatically removing data which is no longer relevent
+* Enable TTL in the Tables/[tables_name]/Items/Actions/Manage TTL to define the TTL attribute
 
 ## Usecase
 * NoSQL Database
@@ -147,14 +168,14 @@ the capacities are hard to forecaset. Bills a per-request charge.
 * One write capacity unit allows to write 1 KB to the table
 
 **Read Capacity Unit(RCU)**
-* One read capacity unit allows to read 4 KBs from the table for **strong consistency**
-* One read capacity unit allows to read 2 * 4 KBs from the table for **eventual consistency**
+* One read capacity unit allows to read 4 KBs per second from the table for **strong consistency**
+* One read capacity unit allows to read 2 * 4 KBs per second from the table for **eventual consistency**
 
 ### Reference
 * [How to Calculate Read and Write Capacity for DynamoDB](https://www2.linuxacademy.com/howtoguides/20310-how-to-calculate-read-and-write-capacity-for-dynamodb/)
 
 ## DynamoDB streams
-> Time ordered sequence of item level change in DynamoDB table 
+> Time ordered sequence of item level change in DynamoDB table(insert, update, delete)
 
 * Like a trigger in Relational Database and this trigger is Lambda function in DynamoDB(Event Driven)
 * Per table basis
@@ -162,10 +183,11 @@ the capacities are hard to forecaset. Bills a per-request charge.
 * Default **NO** streams
 * Allow the changes to trigger the Lambda function. Use DynamoDB provide the resilient and Lambda provide the scalibility.
 * DyanmoDB streams seperate the endpoints from DynamoDB
+* Accessed using a dedicated endpoint
+* As an event source for Lambda allow to create applications which take actions based on events in the dynamodb table
 
 ### Usecase
 * Use DynamoDB streams to implement the transaction in one or more DynamoDB table in **24 hours** windows
-
 
 ### Types
 * KEYS_ONLY: items are added, updated or deleted. The primary key will be added

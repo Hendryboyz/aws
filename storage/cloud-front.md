@@ -23,11 +23,11 @@ Benefits:
 * Origin: The server host the content
 * Distribution: Configure all aspects of a specific implementation of CloudFront from
 * Edge Location: local infrastructures that host caches of users data.(Price Class)
-* Regional Edge Caches: Larger version of edge locations. Less of them but they have more capability and can serve larger areas. 
+* Regional Edge Caches: Larger version of edge locations. Less of them but they have more capability and can serve larger areas.
 
 ## Type
 * Web: Static and dynamic content for browsers
-* RTMP: using Adobe Flash Media Server's RTMP Protocol
+* RTMP: using Adobe Flash Media Server's RTMP Protocol(Adobe Realtime messaging protocol)
 
 ## Origin Access Identity(OAI)
 > Virtual Identities associate with one/more distributions and can be used in bucket policies to restrict the access.
@@ -37,3 +37,4 @@ Benefits:
 
 ## Reference
 * [CloudFront Document](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+* [S3 Transfer Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html)

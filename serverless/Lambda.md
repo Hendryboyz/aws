@@ -69,7 +69,9 @@ Events are used to trigger AWS Lambda. These events can be a variety of things i
 * AWS Virtual Private Cloud: Grant your function access to VPC resources
 * Dead Letter Queues: configure SQS or SNS to accept data from failed function executions
 * Concurrency: the maximum number of concurrent invocations of your function
-  - Reserved account concurency is 1000 per account
+  - Reserved account concurency is 1000 per account per region
+  - TooManyRequestsException(HTTP Status Code: 429)
+* Reserved concurrency guarantees a set number of concurrent executions are always available to a critical function
 * Tags: Key-value pairs to help organize functions
 * Limit reference: https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html
 
@@ -88,6 +90,7 @@ Events are used to trigger AWS Lambda. These events can be a variety of things i
 * Using aliases you can invoke a function with the alias without having to know which version of the function is being referenced
 * Static ARNs but can point to any version of the same function
 * Split traffic traffic between Lambda versions
+  * Can NOT split traffic with $latest, instead create an alias to latest
 
 ### Benefits
 * Easier deployment workflow and management of stages

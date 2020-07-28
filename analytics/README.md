@@ -35,31 +35,9 @@
   * task nodes fail, a core node starts the task on another task/core node
   * allow to use spot instances to get best economy
 
-# Kinesis and Kinesis Firehose
-> Allow to process real time data.
-* Design to injest millions of data in real time
-* Different with SQS
-  * In rolling windows can access all data in the Kinesis, support mulitiple consumer process the same data
-  * SQS(Queue) only allow data to be processed one time
-  * SQS are used for messaging. Kinesis are used for large scale real time streaming
-* Billing per Shard hour
-
-## Firehose
-* Allow the data source
-* Store the large scale streaming data to S3 consistently
-* Perform data transformation before storing the data
-* Kinesis can be the data source and attach Firehose instead the producer talk to the Firehose directly
-
-## Terminologies
-* Producer
-* Consumer
-* Kinesis Stream: Basic components in Kinesis
-  * stream provide 24 hours rolling windows(extend to 7 dyas for external )
-* Kinesis Shard(Kafka Broker): Provide the capacity to stream
-   * 1 MB/secs Write per Shard
-   * 2 MB/secs Read per Shard
-   * 1000/secs Records per Shard  
-* Kinesis Data Record(Kafka Topics): Entity writtent to and read from stream
+## Analytics
+* Run SQL query of that data as it existing in firehose or stream
+* Allow to store the query result to S3, Redshift and Elasticsearch Cluster
 
 # Redshift
 * Peta-bytes scale data warehousing solution from AWS.

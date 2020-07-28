@@ -15,13 +15,16 @@
 * Container is an islolated environment for containerized application
   - container have everything the application need to run
 * Image can be uploaded to the private **container registry**(image repository) for version control.
+  - Elastic Container Repository(ECR) is the private image repository by AWS
 * Dockerhub is the most popular public container registry
 
 ## Elastic Container Service
+* Support both docker(linux) container and windows container
+
 ### Why use ECS/Containers ?
 * Create distributed applications and Microservices
   - Create application architecture comprising independent tasks or processes(microservices)
-  - Allow to start, stop, manage, monitor and **scale** each container independently
+  - Allow to start, stop, manage, monitor and **scale** each container independently(stateless)
 * Batch and Extract-Transform-Load(ETL) Jobs
   - Run different versions of the same job or multiple jobs on the same cluster
   - Share cluster capacity with other processes and/or grow jobs dynamically on demand to improve resource utilization
