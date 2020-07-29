@@ -1,7 +1,8 @@
 #!/bin/bash
+
+# if the volume which was took snapshot is smaller than the new lanuch instance volume
 # Volume from snapshot should be initialized to get full performance
-## list block
-lsblk
+lsblk # list block
 
 ## dd: initial disk 
 sudo dd if=/dev/nvme1n1 of=/dev/null bs=1M
@@ -19,4 +20,3 @@ sudo fio --filename=/dev/nvme2n1 \
   --ioengine=libaio \
   --direct=1 \
   --name=volume-initialize
-  
