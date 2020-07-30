@@ -1,5 +1,4 @@
 # Elastic File System
-
 * Allow to mount on different linux instances at the same time.(EBS can be attached only one instance at the same time)
 * network based multi-user file system
 * Select MAX I/O if hundreds of instance would attach this EFS
@@ -31,3 +30,6 @@ Throughput Mode
 * media processing workflow
 * big data analytics
 * shared data between EC2 instances
+
+## Monitoring
+* Metric data is sent to cloud watch at 1 minute interval and retained for **15 months**
