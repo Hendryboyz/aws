@@ -64,7 +64,8 @@ Support types
 * Multi-AZ increase Recovery Time Objects
 
 ### Read Replica
-* Read only copy and it can be in the same or different region
+* Read only copy and it can be in the same or **different region**
+  * Allow cross region replication
 * Also can deploy to Multi-AZs
 * Copied to read replica **asynchronously**(a little lag existing)
 * Master instance have to **enable automatic backups first**
