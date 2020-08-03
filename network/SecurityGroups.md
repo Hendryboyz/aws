@@ -5,6 +5,7 @@
 * Not allowed to deny rule
 * Belong to specific Virtual Private Cloud
 * Allow to reference other logic entities(othrer security groups) in AWS
+* Each security group in each availability zone has its own network interface
 
 ## Stateful
 * Allow return traffic automatically

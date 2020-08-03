@@ -67,3 +67,10 @@ Spot Fleet: A container making the request to reserve spot instances capacity
 * **Regional reservation plan**
   * Allow part of discount for bigger instance size
   * Allow instance with smaller sizes get the discount rate
+
+  ## Elastic Network Interface
+  * eth0 is default network interface(primary network interface) for each instance
+    * Can NOT detach primary network interface from an instance
+  * ENI place to the subnet
+  * The security group of each instance is attached on ENI
+  * While detaching and reattaching to intances, the attributes and **traffic follow the Elastic Network Interface**

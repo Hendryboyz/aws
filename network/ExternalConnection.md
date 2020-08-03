@@ -54,6 +54,8 @@
 * Consistent high throughput and low latency
 * Move huge large amount of data between AWS and on-premises
 * Take time to provision
+* After finishing, allow to download LoA(Letter of Authorization) and CFA(Connection Facility Assignment) manually.
+* Require single-mode fiber: provide 1 Gbps and 10 Gbps connection
 
 ## Both
 * VPN as a cheaper HA option for DX
