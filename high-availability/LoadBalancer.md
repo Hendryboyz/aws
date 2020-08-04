@@ -46,6 +46,10 @@
 * Using Server Name Indication(SNI) to host multiple SSL certificates
 * Traffic is evenly distributed based on the number of resources assigned to the ELB nodes, even if they are not in the same Availability Zone (known as Cross-Zone Load Balancing).
   * Historically, ELB nodes use to receive traffic evenly. However
+* IP Address Type
+  * ipv4
+  * dualstack: ipv4 + ipv6
+* Session stickness setting is put in target group
 
 
 # Network Load Balancer
@@ -57,6 +61,10 @@
 * Source IP address preservation - packets unchanged
 * IP addressable - static address
 * Allow to register target outside the VPC
+* Register target by
+  * instance id
+  * ip address: source ip address will be the private ip of NLB node, not the original client(NLB will rewrite the http header)
+* Session stickness setting is put in target group
 
 # UseCase
 ## Classic Load Balancer
@@ -72,3 +80,11 @@
 * Ultra-high performance
 * Static IP addresses for your application
 * Multiplayer Online Game(TCP socket connection)
+
+# Best Practice
+* Use **auto scaling group** to register instance to load balancer instead of adding at the creation time
+* With Application load balancer, AWS recommend that pre-warm its ips.
+  * Have to pre-warm the instance to handle the incoming traffic
+* With Network load balancer, no pre-warming needed to handle the millions of connections
+* Session stickyness duration should be more higher than the application login timeout
+* Instance wouldn't be terminated by auto scaling if there is any sticy session attached on it.
