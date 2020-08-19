@@ -1,10 +1,10 @@
 # Cloud Trail
 > goverance, compliance, risk management, and auditing service that records account activity within an AWS account.
 
-* View the last 90 days of events.
 * Send to storage on a periodic basis into storage, not a real time product
 * Allow to integrate with CloudWatch 
 * Enable default in brand new AWS account, but old account have to create Trails mannually
+* the last 90 days of events are available in the **Event History**
 
 ## Trail
 * unit of configuration for cloud trail
