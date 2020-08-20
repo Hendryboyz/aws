@@ -28,6 +28,27 @@
   * Elastic Network Adapter
   * Intel 82599 Virtual Function (VF) interface(Intel Virtual Adapter)
 
+## EC2 Hibernate
+> Hibernate **saves the contents** from the **instance memory (RAM)** to Amazon EBS root volume. We persist the instance's Amazon EBS root volume and any attached Amazon EBS data volumes.
+* Amazon EBS root volume is restored to its **previous state**
+* **RAM contents** are reloaded
+* **Processes** that wer previously running on the instance are resumed
+* Prviously attached data volumes are **reattached** and the instance **retains its instance Id**
+
+### **Pros**
+With EC2 Hibernate, the instance boots much faster. The in-memory state(RAM) is preserved to EBS root volume.
+
+This is useful for: 
+* Long-running processes
+* Services that take time to initialize
+
+### Limit
+* Instance RAM must be less than **150 GB**
+* Instance families include C3, C4, C5, M3, M4, M5, R3, R4, R5, and T2.
+* Available for Windows, Amazon Linux 2 AMI and ubuntu 
+* Instance can not be hibernated for more than **60 days**
+* Available for **On-Demand** instances and **Reserved Instances**
+
 ## Placement Groups
 * Cluster
   * Performance
@@ -68,9 +89,40 @@ Spot Fleet: A container making the request to reserve spot instances capacity
   * Allow part of discount for bigger instance size
   * Allow instance with smaller sizes get the discount rate
 
-  ## Elastic Network Interface
-  * eth0 is default network interface(primary network interface) for each instance
-    * Can NOT detach primary network interface from an instance
-  * ENI place to the subnet
-  * The security group of each instance is attached on ENI
-  * While detaching and reattaching to intances, the attributes and **traffic follow the Elastic Network Interface**
+## Elastic Network Interface
+* eth0 is default network interface(primary network interface) for each instance
+  * Can NOT detach primary network interface from an instance
+* ENI place to the subnet
+* The security group of each instance is attached on ENI
+* While detaching and reattaching to intances, the attributes and **traffic follow the Elastic Network Interface**
+
+## High Performance Computing
+
+### **Data Transfer**
+* Snowball, Snowmobile
+* AWS DataSync to store on S3, EFS, FSx for Windows, etc
+* Direct Connect: pirvate connectivity between AWS and users data center
+  * reduce user' network costs
+  * increase bandwidth througthput
+  * provide a more consistent network experience
+
+### **Compute and Networking**
+* EC2 instances that are GPU(G and P type) or CPU(C type) optimized
+* EC2 fleets(Spot instances or Spot Fleets)
+* Placement groups(cluster placement group)
+* Enhanced Networking: use single root I/O virtualization(SR-IOV) to provide high-performance networking capabilities on supported instance types.
+  * Elastic Network Adapters(ENA): support network speeds of up to 100 Gbps
+  * Elastic Frabric Adapters: network device to attach to EC2 instance to accelerate HPC and machine learning applications.
+
+### **Storage**
+* EBS: Scale up to 64,000 IOPS with Provisioned IOPs
+* Instance Store: ephemeral storage; scale to millions of IOPS; low latency
+
+\> **Network Storage**
+* Amazon S3: distributed object-based storage; not a file system
+* Amazon EFS: scale IOPS based on total size, or use provisioned IOPS
+* Amazon FSx for Lustre: HPC-optimized distributed file system; millions of IOPs, which is also backed by S3
+
+### Orchestration & Automation
+* AWS Batch
+* AWS ParallelCluster
