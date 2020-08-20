@@ -55,3 +55,19 @@
 * Can be mounted to on-premises servers
   - Direct Connect
   - Backup on-premise servers solution
+
+## Amazon FSx for Windows & Lustre
+> **For Windows**: provides a fully managed native Microsoft Windows file system so you can easily move Windows-based applications that require file storage to AWS.  
+**For Lustre**: a fully managed file system that is optimized for compute-intensive workloads
+
+Suitable case:
+* Server that runs Windows Server Message Block (SMB)-based file services
+* Design for Windows and Windows Applications
+* Supports AD users, access control lists, gorups and security policies,along with Distributed File System(DFS) namespaces and replication
+* Share linux file, users should **Elastic File System** as the solution
+
+Lustre file system that can process massive data sets at up to
+* hundreds of gigabytes per second of throughput
+* millions of IOPS
+* sub-millisecond latencies
+* can store data directly on S3
