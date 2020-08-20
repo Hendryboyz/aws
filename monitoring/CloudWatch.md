@@ -21,7 +21,13 @@ Push data to cloud watch use:
 * Granularity
   * 1 minute for detailed monitoring
   * 5 minutes for standard monitoring
+  * 1 hours
+* Retenstion period
+  * 1 minute metric are available for 15 days
+  * 5 minutes metric are available for 63 days
+  * 1 hour metric are available for 455 days
 
+# Cloud Watch Alarm
 ## State
 * OK
 * INSUFFICIENT
@@ -32,9 +38,10 @@ Push data to cloud watch use:
 * Threshold: Exceeding this is bad
 * Period: How long the threshold has been breached before an alarm is generated
 * Action: What to do when a alarm trigger
-  * SNS
-  * Auto Scaling
-  * EC2
+  * Simple Notification Service: trigger a single topic
+    * a topic can be subscribed by **Lambda**, **Simple Queue Service(SQS)**, HTML, email, application, Simple Mail Service(SMS)
+  * Auto Scaling: scale up/down scenario
+  * EC2: recover, stop, terminate or reboot
 
 # CloudWatch Logs
 * collect and store log data(events)
