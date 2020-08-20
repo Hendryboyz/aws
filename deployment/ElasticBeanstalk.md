@@ -5,6 +5,10 @@
 * Require to design the code for Beanstalk
 * Developer should know more about Elastic Beanstalk
 
+## Environment
+* Worker: process **long-running workloads** on demand or perform task on a **schedule**
+* Web server: website, web application, web api serve **HTTP request**
+
 ## RDS deployment
 * Launch within Elastic Beanstalk: support launch RDS inside Elastic Beanstalk environment
   * lifecycle of database is tied to the application environment
