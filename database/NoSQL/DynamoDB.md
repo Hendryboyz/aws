@@ -69,24 +69,33 @@
 ### ProvisionedThroughputExceededException
 > Application is sending more requests to the DynamoDB table than the provisioned read/write capacity can handle
 
-## Advanced Configurations
-### Backups
-* Point-in-time Recovery: Allow to restore to anytime up to last **35days**
-* Allow to create backup manually(Backup index and configurations)
-* Restore will create a new table
-  * Restore will cover the index and configuration
+## Security
+* Site-to-site VPN
+* Direct Connect(DX)
+* Fined-grained access allow to limit the users to take some items or attributes
+* IAM policies and roles
+* CloudWatch and Cloud Trails
+* VPC Endpoints
 
 ### Encryption
 * Allow to use default(AWS Owned) or KMS managed Customer Master Key
 
-### Glabol table
-* Default operate in the single region
-* Steps
-  1. Enable streams
-  2. Add additional region to replica table
-* All tables in the different regions allow to read operation and write operation
-  * Last write to the same item will override the previous results
-* Only allow an **empty table** to enable global table
+## Advanced Configurations
+### Backups & Restore
+* Full backups at anytime
+* Zero impact on table performance or available
+* Consist within seconds and **retained until deleted**
+* Operate with the same region as the source table
+* Allow to create backup manually(Backup index and configurations)
+* Restore will create a new table
+  * Restore will cover the index and configuration
+
+**Point-in-time Recovery(PITR)**
+* Protect against accidental writes or deletes
+* Allow to restore to anytime up to last **35days**
+* Increment backups
+* Not enable by default
+* Last restorable: **5 minutes** in the past
 
 ### Metrics and Monitoring
 * Full integration with CloudWatch
@@ -106,6 +115,11 @@
 * Unstructured Data
 * Database as a service(Serverless)
 * Don't require to provide a upfront schenma
+
+## DynamoDB Transactions
+* Multiple one-or-nothing operations
+* Two underlying reads or writes - prepare/commit
+* Work up to 25 items or 4 MB of data at anytime
 
 ## Architectures
 
@@ -128,6 +142,8 @@ the capacities are hard to forecaset. Bills a per-request charge.
 * Only allow to change between on-demand and provisioned **once per day**
 * Bills a per-request charge.
 * Balance cost and performance
+* **Pay more per request** than with provisioned capacity
+  * only suitable for new launching application that users have no idea about the required capacities
 
 
 #### Autoscaling
@@ -174,14 +190,45 @@ the capacities are hard to forecaset. Bills a per-request charge.
 ### Reference
 * [How to Calculate Read and Write Capacity for DynamoDB](https://www2.linuxacademy.com/howtoguides/20310-how-to-calculate-read-and-write-capacity-for-dynamodb/)
 
+## Database Migration Service(DMS)
+>  A cloud service that makes it easy to migrate relational databases, data warehouses, No SQL databases and other types of data stores. Users can use AWS DMS to migrate data intor the AWS cloud, between on-premises instances(througth an AWS cloud setup) or between combinations of cloud and on-premises setups
+* Support **homogenous** migrations
+  * Oracle => Oracle
+  * Schema Conversion Tool is NOT required to identical databases!
+* Support **heterogeneous** migrations
+  * SQL Server => Amazon Aurora
+  * AWS Schema Conversion Tool(SCT) required
+* Configure all of your data transformation logic inside DMS to perform migrations automatically
+* Source database allow to remain operational during the migrations
+* DynamoDB is not supported as a source database, but allow to use DynamoDB as a destination database
+
+### Source
+* On-premises and EC2 instances databases: Oracle, Microsoft SQL Server, MySQL, MariaDB, PostgreSQL, SAP, MongoDB, DB2
+* Azure SQ 
+* Amazon S3
+* Amazon RDS(including Aurora)
+
+### Target
+* On-premises and EC2 instances databases: Oracle, Microsoft SQL Server, MySQL, MariaDB, PostgreSQL, SAP
+* RDS
+* Redshift
+* DynamoDB
+* S3
+* **Elasticsearch** service
+* Kinesis Data Streams
+* Document DB
+
 ## DynamoDB streams
 > Time ordered sequence of item level change in DynamoDB table(insert, update, delete)
 
 * Like a trigger in Relational Database and this trigger is Lambda function in DynamoDB(Event Driven)
 * Per table basis
 * Provides a rolling **24 hours** window of any changes to items in the table
+  * stream records are group into shard and shard contain the information for accessing and iterating through these records
+  * stream records within shard are removed automatically within **24 hours**
 * Default **NO** streams
 * Allow the changes to trigger the Lambda function. Use DynamoDB provide the resilient and Lambda provide the scalibility.
+  * Combine with Lambda function  for functionality liked stored procedures like RDBMS
 * DyanmoDB streams seperate the endpoints from DynamoDB
 * Accessed using a dedicated endpoint
 * As an event source for Lambda allow to create applications which take actions based on events in the dynamodb table
@@ -194,3 +241,17 @@ the capacities are hard to forecaset. Bills a per-request charge.
 * NEW_IMAGE: entired new item will be added
 * OLD_IMAGE: entired pre-change item will be added
 * NEW_AND_OLD_IMAGES: entired item before and after chaning will be added
+
+### Glabol table
+> Managed Multi-master, Multi-regioned Replication
+* Default operate in the single region
+* Steps
+  1. Enable streams
+  2. Add additional region to replica table
+* All tables in the different regions allow to read operation and write operation
+  * Last write to the same item will override the previous results
+* Only allow an **empty table** to enable global table
+* Based on **Dynamodb Streams**
+* Multi-region redundancy for DR or HA
+* No application writes
+* Replication latency under **one second**

@@ -1,7 +1,8 @@
 # DynamoDB Accelerator
-> In memory caching **eventually consistent** reads for items and query results and reduces the latency from single-digit milliseconds to microseconds.
+> In memory caching **eventually consistent** reads for items and query results and reduces the latency from single-digit milliseconds to **microseconds**.
 
 * faster read milliseconds to microseconds but optimize read table first
+  * 10x performance improvement
 * improve **eventuallly consistent** reads only
 * point the api call to DAX instead of DynamoDB table
 * **DO NOT** use DAX if application **require strongly consistent** reads or write-intensive application
@@ -17,6 +18,7 @@
 ## Cache
 * Item Cache: Cache the result of GetItem and BatchGetItem and has a default 5 minutes TTL
 * Query Cache: Cache the result of query and scan operations
+*  Write througth cache, DAX can be used to improve write performance
 
 ## Usecases
 * require the fastest possible response time for reads
