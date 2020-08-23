@@ -1,9 +1,16 @@
-# Elastic Cache
+# Caching
+> Cache is a balancing act between **up-to-date, accurate information** and **latency**. We can use the following services to **cache to AWS**
+* Cloud Front
+* API Gateway
+* Elastic cache - Memcached and Redis
+* DynamoDB Accelerator (DAX)
+
+## Elastic Cache
 > Full managed, in-memory cache engine used to imporvie database performance by caching results of queries that are made to a database
 * Operate outside the DynamoDB, and want to improve the read performance.
 * Key value store
 
-## Caching Engine
+### Caching Engine
 * Redis
   * Supports more complex data structures
   * Supports master/slave replication and multi-az for cross AZ redundancy
@@ -11,7 +18,7 @@
   * Multi-threaded
   * No Multi-AZ capability
 
-## Usecase
+### Usecase
 * offloading database read by cachine db response and improve performance(performance enhancing)
 * store user session for the stateless compute instances(fault-tolerant architectures)
 * Allow for managing web sessions, and also caching dynamically generated data
@@ -21,7 +28,7 @@
 * Good for compute heavy workloads
 * Be used to store results of I/O intensive database queries or output of compute-intensive calculations
 
-## Caching Strategies
+### Caching Strategies
 * Lazy Loading
   - wirte data to the cache when a cache miss occurs
   - avoid filling up the cache with that won't be requested
