@@ -30,3 +30,43 @@ AWS recommend user rotate their access key regularly, so they provide maximum 2 
 
 ## Amazon Inspector
 > Automated security assessment service to test the network accessiblity of Amazon EC2 instances and the security state of your applications running on the instances.
+
+## IAM Policy
+* JSON format document defines permissions
+* No effect until attached
+* policy is a **List of Statements**
+    * Each statement matches an **AWS API request**
+    * AWS API Request is **any action users can perform** in AWS
+* Inline policy limit the permission of the policy in the scope of the IAM resources(users, groups or roles)
+
+``` Json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            ...
+        },
+        {
+            ...
+        }
+    ]
+}
+```
+
+###  Identity Policy
+* attach to users, group and roles
+
+### Resource policy
+* attach to resource(s3, sqs queue and kms, etc.)
+
+### Permission Boundaries
+* Used to **delegate** adminstration to other users
+* Prevent **privilege escalation** or **unnecessarily broad permissions**
+  * set the maximum permissions that an identity based policy can grant to an IAM entity
+* Control **Maximum** permissions an IAM policy can grant
+
+### Tips
+* Not explicitly allow = implicitly denied
+* Explicitly denied > everything else
+* Only attached policies have effect
+* AWS joins all applicable policies
