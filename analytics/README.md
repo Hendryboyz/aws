@@ -13,27 +13,38 @@
 * Only the data users queried during the operation
 
 # Elastic MapReduce
-> a tool for large-scale parallel processing of big data and other large data workloads.
+> a tool for large-scale parallel processing of big data and other large data workloads. With EMR, users can run petabyte-scale analysis at **less than half the cost of traditional on-premises solutions** and over 3 times faster than standard Apache Spark
+* **Big data processing** solution hosted on AWS
 * Apache Hadoop is delivered as a managed cluster service using EC2 instances.
 * Use EMRFS to share, input and output the file in S3
 * On-demand billing
 * Used for large scale data, log analysis, indexing, machine learning, and many other large scale **computing** service
 * Athena is only for quering the files that have already in S3
 
-## Nodes
+## Nodes in the Cluster
 * master
   * split the job to other nodes
   * manage clusters
   * master fail = cluster fail
+  * track the **status of tasks**
+  * monitor the health of the cluster
+  * every cluster has a master node
 * core
   * zero or more nodes
   * manage data for HDFS
-  * run jobs
+  * run jobs(tasks) and stores data
   * using stable computing service
+  * multinode cluster must have at least one node
 * task
-  * only run tasks
+  * only run tasks, **DOES NOT** store data in HDFS
   * task nodes fail, a core node starts the task on another task/core node
   * allow to use spot instances to get best economy
+  * task nodes are **optional**
+
+## High Availability
+* Persist logs in master node: archive the log files stored on the master node to Amazon S3 periodically
+  * 5-minutes intervals
+  * only allow to setup while creating the cluster for the first time
 
 ## Analytics
 * Run SQL query of that data as it existing in firehose or stream
@@ -51,4 +62,13 @@
 
 * Athena: Perform transactional queries on data in the S3
 * EMR: Large scale analytics and modified data
-* 
+
+## Architecture
+A cluster is a set of nodes that consists of :
+ - leader node: only one
+ - compute nodes: a lot of compute nodes
+### Leader Node
+* Receive query from client application 
+
+### Compute Node
+
