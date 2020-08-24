@@ -47,6 +47,11 @@
 * Flexibility to change locations
 * High avaiable options avaiable
 
+## AWS VPN CloudHub
+* If you have multiple sites, each site with its own VPN connection, you can use VPN CloudHub to connect those sites together
+* Hub-and-Spoke model
+* Low cost, easy to manage
+* It operates over the public internet, but all traffic between the customer gateway and AWS VPN CloudHub is encrypted
 
 ## Direct Connect(DX)
 * Low latency
