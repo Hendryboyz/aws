@@ -66,3 +66,22 @@
 ### **NOT** AD compatible
 * Cloud Directory
 * Congito user pools
+
+# AWS Resource Access Manager(RAM)
+> AWS Resource Access Manager allows **resource sharing** between individual accounts or account in the AWS organization
+
+* Account A share resource for Account B. Account B **have to confirm the resource share invitation** from Acconut A.(Like VPC peering)
+
+Resource can be shared(8 types)
+* App Mesh
+* Aurora
+* CodeBuild
+* EC2
+* EC2 Image Builder
+* License Manager
+* Resource Group
+* Route53
+
+Example
+* Account A **share private subnet** to Account B. Account B can create EC2 instance in the private subnet of Account A but Account B **have NO permissions to management** the private subnet of Account A.
+* Account A share **RDS Aurora Deployment** for Account B. After sharing invitation confirmed, Account B can **clone** the RDS Aurora Deployment from Account A to his/her accounts.
