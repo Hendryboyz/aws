@@ -5,17 +5,6 @@
 * Use existing corporate credentials
 * SSO to any domain-joined EC2 instance
 
-## Amazon Cognito User Pools
-* Managed user directory for SaaS applications
-* sign-up and sign-in for web or mobile
-* Works with **social media** identities
-
-## Cloud Directory
-* Directory-based store for **developers**
-* Multiple hierarchies with hundreds of millions of objects
-* Use cases: org charts, course catalogs, device registries
-* Fully managed service
-
 ## Active directory
 * On-premises directory servcie
 * Hierarchical database of users, groups and computers - **trees** and **forests**
@@ -35,7 +24,8 @@
 * Users, groups and group policy objects(GPOs)
 * standard AD tools
 * Scale out DCs
-* Trusts(resource forest)
+* AD Trusts(resource forest)
+  * extend existing active directory(inside AWS) to on-premises AD and vice versa
 * Certificate authorities(LDAPs)
 * AD Federation
 
@@ -47,7 +37,7 @@
   * large: <= 5000 users
 * easier to manage EC2
 * Linux workloads that need LDAP
-* Does not support **trusts**(can't join on-premises AD)
+* Does **NOT** support **trusts**(can't join on-premises AD)
 
 ## AD Connector
 * use users' existing on premises directory with compatible AWS services
@@ -56,6 +46,17 @@
 * Allow on-premises users to log in to AWS using AD
 * Join EC2 instances to your existing AD domain
 * Scale across multiple AD connectors
+
+## Amazon Cognito User Pools
+* Managed user directory for SaaS applications
+* sign-up and sign-in for web or mobile
+* Works with **social media** identities
+
+## Cloud Directory
+* Directory-based store for **developers**
+* Multiple hierarchies with hundreds of millions of objects
+* Use cases: org charts, course catalogs, device registries
+* Fully managed service
 
 ## Compatibility
 ### AD Compatible
@@ -66,6 +67,7 @@
 ### **NOT** AD compatible
 * Cloud Directory
 * Congito user pools
+
 
 # AWS Resource Access Manager(RAM)
 > AWS Resource Access Manager allows **resource sharing** between individual accounts or account in the AWS organization

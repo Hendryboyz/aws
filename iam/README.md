@@ -44,10 +44,14 @@ AWS recommend user rotate their access key regularly, so they provide maximum 2 
     "Version": "2012-10-17",
     "Statement": [
         {
-            ...
+            "Effect": "Allow/Deny",
+            "Action": "api-call",
+            "Resource": ["arn:aws:..."]
         },
         {
-            ...
+            "Effect": "Allow/Deny",
+            "Action": "api-call",
+            "Resource": ["arn:aws:..."]
         }
     ]
 }
@@ -68,5 +72,15 @@ AWS recommend user rotate their access key regularly, so they provide maximum 2 
 ### Tips
 * Not explicitly allow = implicitly denied
 * Explicitly denied > everything else
+  * Deny supercedes allow
 * Only attached policies have effect
 * AWS joins all applicable policies
+
+## Single Sign On
+* Centrally manage access
+* Example: G Suite, Office 365, SalesForce
+* Use existing identities
+  > using existing corporate identities to sign in AWS services or third party applications
+* Account-level permissions
+* SAML
+  * Provide cross context authentication session
