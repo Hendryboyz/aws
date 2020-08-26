@@ -44,5 +44,14 @@
 ### Egress-olny Internet Gateways
 > Provide the IPv6 instances with **outgoing only** access to the public internet, but prevent the connection from the public internet
 
+## Transit Gateway
+* Allow to have transitive peering between thousands of VPCs and on-premises data centers
+* Works on a hub-and-spoke model
+* Works on a regional basis, but you can have it across multiple regions
+* can use it across multiple AWS accounts using Resource Access Manager
+* Use route table to limit how VPCs talk to one another
+* Works with Direct Connect as well as VPN connections
+* Support **IP Multicast**(not supported by any other AWS service)
+
 ## Note
 * Every public service have their own public endpoints.
