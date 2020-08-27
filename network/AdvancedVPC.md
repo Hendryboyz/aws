@@ -88,6 +88,8 @@
 
 ### Global Accelerator Notes
 * Client affinity: Like sticy session in elastic load balancer. It allow to direct traffic to specific endpoint if users application is stateful.
+* CloudFront uses edge locations to **cache content** while Global Accelerator uses edge locations to **find an optimal pathway** to the nearest regional endpoint
+* CloudFront is designed to handle HTTP protocol mean while Global Accelerator used for both HTTP and non-HTTP protocols **such as TCP and UDP**
 
 ## Note
 * Every public service have their own public endpoints.
