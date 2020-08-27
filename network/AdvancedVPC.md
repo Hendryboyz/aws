@@ -53,5 +53,41 @@
 * Works with Direct Connect as well as VPN connections
 * Support **IP Multicast**(not supported by any other AWS service)
 
+## Global Accelerator
+> A service in which you create accelerators to improve availablitity and performance of your applications for local and global users.
+
+### Global Accelerator Components
+* Static IP address
+  * provide 2 static ip address
+  * allow users **bring their own** ip address
+* Accelerator
+  * direct traffic optimal endpoints over the AWS Global network
+  * improve the availability and performance of users internet applications
+  * one or more listeners
+* DNS Name
+  * each accelerator have a default Domain Name System(DNS)
+  * DNS/IP of accelerator can be used to route the traffic to Global Accelerator
+* Network Zone
+  * service the static IP addressed for the accelerator from an unique IP subnet.
+  * an isolated unit with its own set of phyical infrastructure
+  * similar to AWS availability zone
+* Listener
+  * processes inbound connections from clients to Glbal Accelerator, based on the port(/port range) and protocol that you configure.
+  * Support both TCP and UDP protocols
+  * one or more endpoint groups associated with it
+  * traffic is fowarded to endpoints in one of the endpoint groups
+* Endpoint Group
+  * Associated with a specific AWS Region
+  * Inlcude one or more endpoints in the Region
+  * Setting a **trafic dial** can increase or decrease the % of traffic that would be otherwise directed to an endpoint group
+  * Blue/Green Deployment
+* Endponit
+  * NLB, ALB, EC2 or Elastic IP addresses
+  * Traffic is routed to endpoints based on configuraion **options**
+  * Allow to configure **weights** for each endpoint
+
+### Global Accelerator Notes
+* Client affinity: Like sticy session in elastic load balancer. It allow to direct traffic to specific endpoint if users application is stateful.
+
 ## Note
 * Every public service have their own public endpoints.
