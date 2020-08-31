@@ -91,5 +91,15 @@
 * CloudFront uses edge locations to **cache content** while Global Accelerator uses edge locations to **find an optimal pathway** to the nearest regional endpoint
 * CloudFront is designed to handle HTTP protocol mean while Global Accelerator used for both HTTP and non-HTTP protocols **such as TCP and UDP**
 
+## AWS Private Link
+* Opening users' services in a VPC to another VPC
+  * open the VPC up to the internet
+  * VPC peering
+  * **Private Link**
+### Pros
+* the best way to expose a service VPC to tens, hundreds or thousands of customer VPCs
+* Doesn't require VPC peering; no route tables, NAT, IGWs, etc.
+* Requires a **Network Load Balancer** on the service VPC and an **ENI** on the customer VPC
+
 ## Note
 * Every public service have their own public endpoints.
