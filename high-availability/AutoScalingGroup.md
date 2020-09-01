@@ -58,6 +58,29 @@ Note:
   * Draining for CLB
   * Deregistration delay in ALB
 
+## Scaling Options
+
+### Maintain current instance levels at all times
+* maintain a specified number of running instances at all times
+* periodic healthy check
+* terminate unhealthy instance and launch a new one
+
+### Scale manually
+* the most basic way to scale resources
+* change in the maximum, minimum or desired capcity of auto scaling group
+* manage the process of creating or terminating instances to maintain the updated capacity
+
+### Scale based on a schedule
+* perform as a function of time and date automatically
+* know when to increase or decrease exactly
+
+### Use predictive scaling
+* also use Amazon EC2 Autoscaling in combination with AWS Auto Scaling to scale resources across multiple services
+* help you maintain optimal avialablity and performance by combining predictive scaling and dynamic scaling
+
+### Scale based on demand
+* using **scaling policies** - let you define parameters that control the scaling process
+
 ## Scaling Policies
 > based on eithor metrics that monitored or the scheduled action to scale in/out
 
