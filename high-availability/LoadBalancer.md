@@ -51,6 +51,13 @@
   * dualstack: ipv4 + ipv6
 * Session stickness setting is put in target group
 
+## Access Logs
+
+### Bucket Permission
+Enable access logs, users must specify a S3 bucket to store the access logs and the bucket have to meet the following requirements:
+* bucket must be the **same region** of the load balancer
+* Amazon server side encryption S3 is required (SSE-S3)
+* have a bucket policy to grant permission for ALB to write the logs to bucket
 
 # Network Load Balancer
 * Operate at layer 4(Transport) of the OSI network model
