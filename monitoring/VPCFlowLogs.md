@@ -27,8 +27,8 @@
 * Auto apply the VPC Flow Logs down Subnet or ENI 
 
 ## Log Traffic Exception
-* Amazon DNS server
-* Windows license activation
-* 169.254.169.254
+* Amazon DNS server, but traffic would be logged if users use their own DNS server
+* Windows instance for Amazon Windows license activation
+* 169.254.169.254 for instance metadata
 * DHCP
-* VPC router
+* traffic to the reserved IP addresses for the deafult **VPC router**
