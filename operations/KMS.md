@@ -51,3 +51,17 @@
 * Used outside AWS by users who can't call KMS APIs
 * AWS services integrated with KMS **DO NOT SUPPORT** asymmetric CMKs
 * Sign messages and verify signatures
+
+# Cloud HSM
+* Dedicated hardware security module (HSM)
+* FIPS 140-2 Level 3
+* Manage your own keys
+* **No access** to the AWS-managed component
+* Runs within a VPC in your accoun
+* Single tenant, dedicated hardware, multi-AZ cluster
+* Industry-standard APIs - **no AWS APIs**
+* Compliance to:
+  * PKCS#11
+  * Java Cryptography Extensions(JCE)
+  * Microsoft CryptoNG(CNG)
+* Keep your key safe - **irretrievable** if lost
